@@ -4,24 +4,31 @@ provider "aws" {
 
 locals {
   enabled = true
+  
 
-  attributes = concat(
-    [
-      {
-        name = var.range_key
-        type = var.range_key_type
-      },
-      {
-        name = var.hash_key
-        type = var.hash_key_type
-      }
-    ],
-    var.dynamodb_attributes
-  )
+  # attributes = concat(
+  #   [
+  #     {
+  #       name = var.range_key
+  #       type = var.range_key_type
+  #     },
+  #     {
+  #       name = var.hash_key
+  #       type = var.hash_key_type
+  #     }
+  #   ],
+  #   var.dynamodb_attributes
+  # )
+
+  
 
 }
 
 resource "aws_dynamodb_table" "default" {
+  attribute {
+    name = "id"
+    type = "S"
+  }
   count                       = local.enabled ? 1 : 0
   name                        = var.table_name
   billing_mode                = var.billing_mode
