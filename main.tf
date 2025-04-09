@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  enabled = module.this.enabled
+  enabled = true
 
   attributes = concat(
     [
