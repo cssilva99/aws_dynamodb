@@ -30,7 +30,7 @@ variable "enable_streams" {
 
 variable "table_name" {
   type        = string
-  default     = "testdynamodbtable"
+  default     = "default"
   description = "Table name. If provided, the bucket will be created with this name instead of generating the name from the context"
 }
 
